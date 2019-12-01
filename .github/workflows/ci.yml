@@ -25,6 +25,7 @@ jobs:
         path: node_modules
         key: ${{ runner.OS }}-node_modules-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
     - name: Resolve Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
       run: |
         yarn
     - name: Build
@@ -56,6 +57,7 @@ jobs:
         path: node_modules
         key: ${{ runner.OS }}-node_modules-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
     - name: Resolve Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
       run: |
         yarn
     - name: test
