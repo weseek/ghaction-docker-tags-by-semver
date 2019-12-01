@@ -24,6 +24,9 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.OS }}-node_modules-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
+    - name: Resolve Dependencies
+      run: |
+        yarn
     - name: Build
       run: |
         yarn build
@@ -52,6 +55,9 @@ jobs:
       with:
         path: node_modules
         key: ${{ runner.OS }}-node_modules-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
+    - name: Resolve Dependencies
+      run: |
+        yarn
     - name: test
       run: |
         yarn test
