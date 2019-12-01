@@ -1,21 +1,71 @@
-# Hello world javascript action
+# Docker tags by SemVer Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+<p align="left">
+</p>
 
-## Inputs
+This action create multiple docker tags by specified [Semantic Version](https://semver.org/) with [`docker tag` command](https://docs.docker.com/engine/reference/commandline/tag/).
 
-### `who-to-greet`
+# Usage
 
-**Required** The name of the person to greet. Default `"World"`.
+## Minimum Example
 
-## Outputs
+```yaml
+steps:
+- uses: weseek/ghaction-docker-tags-by-semver@v1
+  with:
+    source: 'myimage'
+    target: myorg/myimage
+    semver: '1.2.3'
+```
 
-### `time`
+exec following command:
 
-The time we greeted you.
+```bash
+docker tag myimage myorg/myimage:1
+docker tag myimage myorg/myimage:1.2
+docker tag myimage myorg/myimage:1.2.3
+```
 
-## Example usage
+## With Suffix
 
-uses: actions/hello-world-javascript-action@v1
-with:
-  who-to-greet: 'Mona the Octocat'
+```yaml
+steps:
+- uses: weseek/ghaction-docker-tags-by-semver@v1
+  with:
+    source: 'myimage'
+    target: myorg/myimage
+    semver: '1.2.3'
+    semver: '-nocdn'
+```
+
+exec following command:
+
+```bash
+docker tag myimage myorg/myimage:1-nocdn
+docker tag myimage myorg/myimage:1.2-nocdn
+docker tag myimage myorg/myimage:1.2.3-nocdn
+```
+
+## Release Candidate
+
+If `semver` ends with `-RC`, tag with timestamp is created automatically.
+
+```yaml
+steps:
+- uses: weseek/ghaction-docker-tags-by-semver@v1
+  with:
+    source: 'myimage'
+    target: myorg/myimage
+    semver: '1.2.4-RC'
+```
+
+exec following command:
+
+```bash
+docker tag myimage myorg/myimage:1.2.4-RC
+docker tag myimage myorg/myimage:1.2.4-RC.20200703090000
+```
+
+# License
+
+The scripts and documentation in this project are released under the [MIT License](LICENSE)
