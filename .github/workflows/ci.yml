@@ -27,10 +27,10 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
         yarn
-    - name: build
+    - name: Build
       run: |
         yarn build
-    - name: check whether workspace is clean
+    - name: Check whether workspace is clean
       run: |
         if [ -z `git status --porcelain` ]; then exit 0; else exit 1; fi
 
