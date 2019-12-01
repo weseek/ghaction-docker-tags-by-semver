@@ -4,9 +4,9 @@ import * as path from 'path'
 
 describe.each`
   semver          | suffix
-  ${'12.3.4'}     | ''
-  ${'12.3.4'}     | '-nocdn'
-  ${'12.3.4-RC'}  | '-nocdn'
+  ${'12.3.4'}     | ${''}
+  ${'12.3.4'}     | ${'-nocdn'}
+  ${'12.3.4-RC'}  | ${'-nocdn'}
 `('test runs', ({semver, suffix}) => {
   test(`with semver='${semver}', suffix='${suffix}'`, () => {
     process.env['INPUT_SOURCE'] = 'node:12';
