@@ -31,7 +31,7 @@ function parseSemVer(semver: string, suffix: string): Array<string> {
 
   const tags: Array<string> = [];
 
-  if (rc == null) {
+  if (rc != null) {
     const date: string = format(new Date(), 'yyyyMMddhhmmss');
     tags.push(all);
     tags.push(`${all}.${date}`);
