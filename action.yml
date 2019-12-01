@@ -1,0 +1,19 @@
+name: 'Docker Tags by SemVer'
+description: 'Create Docker tags by Semantic Version'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+  id-or-name:
+    description: 'ID or name of the target docker image'
+    required: true
+  semver:
+    description: 'Semantic Version to create docker tags'
+    required: true
+  suffix:
+    description: 'Suffix string to add to tag'
+    default: ''
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

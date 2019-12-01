@@ -1,0 +1,27 @@
+{
+  "name": "ghaction-docker-tag-by-semver",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/weseek/ghaction-docker-tag-by-semver.git",
+  "author": "Yuki Takei <yuki@weseek.co.jp>",
+  "license": "MIT",
+  "scripts": {
+    "build": "ncc build -m index.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@zeit/ncc": "^0.20.5",
+    "eslint": "^6.0.1",
+    "eslint-config-weseek": "^1.0.3",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^23.0.3",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  }
+}

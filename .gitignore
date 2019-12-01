@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log.*
+
+# OS generated files #
+.DS_Store
+.Trash-*
+ehthumbs.db
+Thumbs.db
+
+# Node Files #
+/node_modules/
+/bower_components/
+npm-debug.log
+/npm-debug.log.*
+package-lock.json
+
+# Dist #
+/report/
+/public/*.chunk.js
+/public/*.chunk.js.LICENSE
+/public/*.bundle.js
+/public/manifest.json
+/public/dll
+/public/js
+/public/styles
+/public/uploads
+/src/*/__build__/
+/__build__/**
+/src/*/dist/
+/.awcache
+.webpack.json
+/compiled/
+/tmp/
+
+# Doc #
+/doc/
+
+# IDE, dev #
+.idea
+*.orig
