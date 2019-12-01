@@ -35,7 +35,7 @@ steps:
     source: 'myimage'
     target: myorg/myimage
     semver: '1.2.3'
-    semver: '-nocdn'
+    suffix: '-nocdn'
 ```
 
 exec following command:
