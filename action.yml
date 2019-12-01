@@ -1,7 +1,7 @@
 name: 'Docker Tags by SemVer'
 description: 'Create Docker tags by Semantic Version'
 branding:
-  icon: anchor
+  icon: tag
   color: gray-dark
 inputs:
   source:
