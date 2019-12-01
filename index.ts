@@ -63,7 +63,7 @@ async function run() {
       await exec('docker', ['tag', source, `${target}:${tag}`]);
     }
 
-    core.setOutput('time', new Date().toTimeString());
+    core.setOutput('tags', tags.join(', '));
   }
   catch (error) {
     core.setFailed(error.message);
