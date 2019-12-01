@@ -33,7 +33,8 @@ jobs:
         yarn build
     - name: Check whether workspace is clean
       run: |
-        if [ -z `git status --porcelain` ]; then exit 0; else exit 1; fi
+        STATUS=`git status --porcelain`
+        if [ -z $STATUS ]; then exit 0; else exit 1; fi
 
 
   test:
