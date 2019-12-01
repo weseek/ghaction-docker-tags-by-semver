@@ -1,12 +1,11 @@
 name: 'Docker Tags by SemVer'
 description: 'Create Docker tags by Semantic Version'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  source:
+    description: 'ID or name of the source docker image'
     required: true
-    default: 'World'
-  id-or-name:
-    description: 'ID or name of the target docker image'
+  target:
+    description: 'Name of the target docker image without tag'
     required: true
   semver:
     description: 'Semantic Version to create docker tags'

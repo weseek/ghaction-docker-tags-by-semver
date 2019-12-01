@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.2.0.tgz#aa5f52b26c362c821d41557e599371a42f6c0b3d"
   integrity sha512-ZKdyhlSlyz38S6YFfPnyNgCDZuAF2T0Qv5eHflNWytPS8Qjvz39bZFMry9Bb/dpSnqWcNeav5yM2CTYpJeY+Dw==
 
+"@actions/exec@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@actions/exec/-/exec-1.0.1.tgz#1624b541165697e7008d7c87bc1f69f191263c6c"
+  integrity sha512-nvFkxwiicvpzNiCBF4wFBDfnBvi7xp/as7LE1hBxBxKG2L29+gkIPBiLKMVORL+Hg3JNf07AKRfl0V5djoypjQ==
+
 "@actions/github@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@actions/github/-/github-1.1.0.tgz#06f34e6b0cf07eb2b3641de3e680dbfae6bcd400"
