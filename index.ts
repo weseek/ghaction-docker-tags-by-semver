@@ -50,9 +50,9 @@ async function run() {
     // check docker command
     await exec('docker', ['-v']);
 
-    const source: string = core.getInput('source');
-    const target: string = core.getInput('target');
-    const semver: string = core.getInput('semver');
+    const source: string = core.getInput('source', { required: true });
+    const target: string = core.getInput('target', { required: true });
+    const semver: string = core.getInput('semver', { required: true });
     const suffix: string = core.getInput('suffix'); // default: ''
 
     // generate tags
