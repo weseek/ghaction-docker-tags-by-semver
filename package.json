@@ -1,6 +1,6 @@
 {
   "name": "ghaction-docker-tag-by-semver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "repository": "https://github.com/weseek/ghaction-docker-tag-by-semver.git",
   "author": "Yuki Takei <yuki@weseek.co.jp>",
