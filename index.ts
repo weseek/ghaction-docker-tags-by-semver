@@ -63,7 +63,7 @@ async function run() {
       await exec('docker', ['tag', source, `${target}:${tag}`]);
     }
 
-    core.setOutput('tags', tags.join(', '));
+    core.setOutput('tags', tags.join(','));
   }
   catch (error) {
     core.setFailed(error.message);
