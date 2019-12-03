@@ -13,7 +13,7 @@ describe.each`
     process.env['INPUT_TARGET'] = 'mynode';
     process.env['INPUT_SEMVER'] = semver;
     process.env['INPUT_SUFFIX'] = suffix;
-    process.env['INPUT_PUBLISH'] = false;
+    process.env['INPUT_PUBLISH'] = 'false';
 
     const ip = path.join(__dirname, '..', 'dist', 'index.js');
     const options: cp.ExecSyncOptions = {
