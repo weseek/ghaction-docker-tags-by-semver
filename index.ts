@@ -54,8 +54,8 @@ async function run() {
     const source: string = core.getInput('source', { required: true });
     const target: string = core.getInput('target', { required: true });
     const semver: string = core.getInput('semver', { required: true });
-    const suffix: string = core.getInput('suffix'); //      default: ''
-    const isPublish: string = core.getInput('publish'); //  default: false
+    const suffix: string = core.getInput('suffix'); //                 default: ''
+    const isPublish: boolean = core.getInput('publish') === 'true'; // default: null
 
     // generate tags
     const tags: Array<string> = parseSemVer(semver, suffix);
