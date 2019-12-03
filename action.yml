@@ -16,6 +16,9 @@ inputs:
   suffix:
     description: 'Suffix string to add to tag'
     default: ''
+  publish:
+    description: 'Publish images or not'
+    default: false
 runs:
   using: 'node12'
   main: 'dist/index.js'

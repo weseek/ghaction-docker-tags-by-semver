@@ -37,9 +37,10 @@ function parseSemVer(semver: string, suffix: string): Array<string> {
     tags.push(`${all}.${date}`);
   }
   else {
-    tags.push(`${major}${suffix}`);
-    tags.push(`${major}.${minor}${suffix}`);
     tags.push(`${major}.${minor}.${patch}${suffix}`);
+    tags.push(`${major}.${minor}${suffix}`);
+    tags.push(`${major}${suffix}`);
+    tags.push('latest');
   }
 
   return tags;
@@ -53,14 +54,20 @@ async function run() {
     const source: string = core.getInput('source', { required: true });
     const target: string = core.getInput('target', { required: true });
     const semver: string = core.getInput('semver', { required: true });
-    const suffix: string = core.getInput('suffix'); // default: ''
+    const suffix: string = core.getInput('suffix'); //      default: ''
+    const isPublish: string = core.getInput('publish'); //  default: false
 
     // generate tags
     const tags: Array<string> = parseSemVer(semver, suffix);
 
-    // exec 'docker tag' command
     for (const tag of tags) {
-      await exec('docker', ['tag', source, `${target}:${tag}`]);
+      const name = `${target}:${tag}`;
+      // exec 'docker tag'
+      await exec('docker', ['tag', source, name]);
+      // exec 'docker push
+      if (isPublish) {
+        await exec('docker', ['push', name]);
+      }
     }
 
     core.setOutput('tags', tags.join(','));
