@@ -8,9 +8,10 @@ import format from 'date-fns/format';
  *
  * @param semver Semantic version string
  * @param suffix Suffix string to append to trailing of each tags
+ * @param latest Append the 'latest' tag
  * @returns Array of tags
  */
-function parseSemVer(semver: string, suffix: string): Array<string> {
+function parseSemVer(semver: string, suffix: string, appendLatest: boolean): Array<string> {
   // https://regex101.com/r/sxGQtU/2
   const match: RegExpMatchArray | null = semver.match(/^([0-9]+)\.([0-9]+)\.([0-9]+)(-RC[0-9]*)?$/);
   if (match == null) {
@@ -40,7 +41,9 @@ function parseSemVer(semver: string, suffix: string): Array<string> {
     tags.push(`${major}.${minor}.${patch}${suffix}`);
     tags.push(`${major}.${minor}${suffix}`);
     tags.push(`${major}${suffix}`);
-    tags.push('latest');
+    if (appendLatest) {
+      tags.push('latest');
+    }
   }
 
   return tags;
@@ -54,11 +57,12 @@ async function run() {
     const source: string = core.getInput('source', { required: true });
     const target: string = core.getInput('target', { required: true });
     const semver: string = core.getInput('semver', { required: true });
-    const suffix: string = core.getInput('suffix'); //                 default: ''
-    const isPublish: boolean = core.getInput('publish') === 'true'; // default: null
+    const suffix: string = core.getInput('suffix'); //                   default: ''
+    const appendLatest: boolean = core.getInput('latest') === 'true'; // default: null
+    const isPublish: boolean = core.getInput('publish') === 'true'; //   default: null
 
     // generate tags
-    const tags: Array<string> = parseSemVer(semver, suffix);
+    const tags: Array<string> = parseSemVer(semver, suffix, appendLatest);
 
     for (const tag of tags) {
       const name = `${target}:${tag}`;

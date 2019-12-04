@@ -16,6 +16,8 @@ inputs:
   suffix:
     description: 'Suffix string to add to tag'
     default: ''
+  latest:
+    description: 'Append the \'latest\' tag'
   publish:
     description: 'Publish images or not'
 runs:
