@@ -5,6 +5,8 @@
 
 This action create multiple docker tags by specified [Semantic Version](https://semver.org/) with [`docker tag` command](https://docs.docker.com/engine/reference/commandline/tag/).
 
+However, **this action does NOT execute both `docker login` and `docker build`**. Do it yourself if needed.
+
 # Usage
 
 ```yaml
@@ -36,6 +38,42 @@ docker tag myimage myorg/myimage:1.2.3
 
 
 # Examples
+
+## Login, Build and Push
+
+```yaml
+steps:
+
+- name: Login to docker.io registry
+  run: |
+    echo ${{ secrets. DOCKER_REGISTRY_PASSWORD }} | docker login --username ${{ secrets. DOCKER_REGISTRY_USERNAME }} --password-stdin
+
+- name: Build image
+  run: |
+    docker build -t myimage .
+
+- uses: weseek/ghaction-docker-tags-by-semver@v1
+  with:
+    source: 'myimage'
+    target: myorg/myimage
+    semver: '1.2.3'
+    publish: true
+```
+
+exec following command:
+
+```bash
+echo ... | docker login --username ... --password-stdin
+
+docker build -t myimage .
+
+docker tag myimage myorg/myimage:1
+docker push myorg/myimage:1
+docker tag myimage myorg/myimage:1.2
+docker push myorg/myimage:1.2
+docker tag myimage myorg/myimage:1.2.3
+docker push myorg/myimage:1.2.3
+```
 
 ## With Suffix
 
@@ -75,29 +113,6 @@ exec following command:
 ```bash
 docker tag myimage myorg/myimage:1.2.4-RC
 docker tag myimage myorg/myimage:1.2.4-RC.20200703090000
-```
-
-## Exec Push
-
-```yaml
-steps:
-- uses: weseek/ghaction-docker-tags-by-semver@v1
-  with:
-    source: 'myimage'
-    target: myorg/myimage
-    semver: '1.2.3'
-    publish: true
-```
-
-exec following command:
-
-```bash
-docker tag myimage myorg/myimage:1
-docker push myorg/myimage:1
-docker tag myimage myorg/myimage:1.2
-docker push myorg/myimage:1.2
-docker tag myimage myorg/myimage:1.2.3
-docker push myorg/myimage:1.2.3
 ```
 
 # License
