@@ -96,7 +96,7 @@ docker tag myimage myorg/myimage:1.2-nocdn
 docker tag myimage myorg/myimage:1-nocdn
 ```
 
-## With the 'latest' tag
+## Append additional tags
 
 ```yaml
 steps:
@@ -105,17 +105,18 @@ steps:
     source: 'myimage'
     target: myorg/myimage
     semver: '1.2.3'
+    suffix: '-nocdn'
     additional-tags: 'latest,lts'
 ```
 
 exec following command:
 
 ```bash
-docker tag myimage myorg/myimage:1.2.3
-docker tag myimage myorg/myimage:1.2
-docker tag myimage myorg/myimage:1
-docker tag myimage myorg/myimage:latest
-docker tag myimage myorg/myimage:lts
+docker tag myimage myorg/myimage:1.2.3-nocdn
+docker tag myimage myorg/myimage:1.2-nocdn
+docker tag myimage myorg/myimage:1-nocdn
+docker tag myimage myorg/myimage:latest-nocdn
+docker tag myimage myorg/myimage:lts-nocdn
 ```
 
 ## Release Candidate
