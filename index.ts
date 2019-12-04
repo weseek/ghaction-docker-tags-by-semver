@@ -71,6 +71,9 @@ async function run() {
 
     for (const tag of tags) {
       const name = `${target}:${tag}`;
+
+      core.debug(`processing '${name}'`);
+
       // exec 'docker tag'
       await exec('docker', ['tag', source, name]);
       // exec 'docker push
@@ -79,7 +82,7 @@ async function run() {
       }
     }
 
-    core.setOutput('tags', tags.join(','));
+    core.setOutput('tags', tags.join(', '));
   }
   catch (error) {
     core.setFailed(error.message);
