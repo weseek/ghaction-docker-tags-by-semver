@@ -47,7 +47,7 @@ function parseSemVer(semver: string, suffix: string, additionalTagsStr: string):
   additionalTagsStr.split(',').forEach((splitted) => {
     const tag = splitted.trim();
     if (tag.length > 0) {
-      tags.push();
+      tags.push(`${tag}${suffix}`);
     }
   });
 

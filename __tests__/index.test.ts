@@ -7,7 +7,8 @@ describe.each`
   ${'12.3.4'}     | ${''}        | ${''}
   ${'12.3.4'}     | ${'-nocdn'}  | ${''}
   ${'12.3.4'}     | ${''}        | ${'latest,lts'}
-  ${'12.3.4-RC'}  | ${'-nocdn'}  | ${'dummy'}
+  ${'12.3.4'}     | ${'-nocdn'}  | ${'latest,lts'}
+  ${'12.3.4-RC'}  | ${'-nocdn'}  | ${''}
 `('test runs', ({semver, suffix, additionalTagsStr}) => {
   test(`with semver='${semver}', suffix='${suffix}', additionalTagsStr='${additionalTagsStr}'`, () => {
     process.env['INPUT_SOURCE'] = 'node:12';
