@@ -15,7 +15,7 @@ describe.each`
     process.env['INPUT_SEMVER'] = semver;
     process.env['INPUT_SUFFIX'] = suffix;
     process.env['INPUT_ADDITIONAL-TAGS'] = additionalTagsStr;
-    process.env['INPUT_PUBLISH'] = null;
+    process.env['INPUT_PUBLISH'] = undefined;
 
     const ip = path.join(__dirname, '..', 'dist', 'index.js');
     const options: cp.ExecSyncOptions = {
