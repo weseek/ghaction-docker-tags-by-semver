@@ -18,6 +18,7 @@ inputs:
     default: ''
   additional-tags:
     description: 'Additional tags to append'
+    default: ''
   publish:
     description: 'Publish images or not'
 runs:
