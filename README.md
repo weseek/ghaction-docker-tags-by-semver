@@ -21,9 +21,9 @@ steps:
 exec following command:
 
 ```bash
-docker tag myimage myorg/myimage:1
-docker tag myimage myorg/myimage:1.2
 docker tag myimage myorg/myimage:1.2.3
+docker tag myimage myorg/myimage:1.2
+docker tag myimage myorg/myimage:1
 ```
 
 ## Parameters
@@ -34,6 +34,7 @@ docker tag myimage myorg/myimage:1.2.3
 | target | :heavy_check_mark: | | Name of the target docker image without tag<br />[docker docs](https://docs.docker.com/engine/reference/commandline/tag/) |
 | semver | :heavy_check_mark: | | Semantic Version to create docker tags |
 | suffix |  | | Suffix string to add to tag |
+| additional-tags |  | | Comma-separated string of tags to append |
 | publish |  | | Publish images or not |
 
 
@@ -67,12 +68,12 @@ echo ... | docker login --username ... --password-stdin
 
 docker build -t myimage .
 
-docker tag myimage myorg/myimage:1
-docker push myorg/myimage:1
-docker tag myimage myorg/myimage:1.2
-docker push myorg/myimage:1.2
 docker tag myimage myorg/myimage:1.2.3
 docker push myorg/myimage:1.2.3
+docker tag myimage myorg/myimage:1.2
+docker push myorg/myimage:1.2
+docker tag myimage myorg/myimage:1
+docker push myorg/myimage:1
 ```
 
 ## With Suffix
@@ -90,9 +91,31 @@ steps:
 exec following command:
 
 ```bash
-docker tag myimage myorg/myimage:1-nocdn
-docker tag myimage myorg/myimage:1.2-nocdn
 docker tag myimage myorg/myimage:1.2.3-nocdn
+docker tag myimage myorg/myimage:1.2-nocdn
+docker tag myimage myorg/myimage:1-nocdn
+```
+
+## With the 'latest' tag
+
+```yaml
+steps:
+- uses: weseek/ghaction-docker-tags-by-semver@v1
+  with:
+    source: 'myimage'
+    target: myorg/myimage
+    semver: '1.2.3'
+    additional-tags: 'latest,lts'
+```
+
+exec following command:
+
+```bash
+docker tag myimage myorg/myimage:1.2.3
+docker tag myimage myorg/myimage:1.2
+docker tag myimage myorg/myimage:1
+docker tag myimage myorg/myimage:latest
+docker tag myimage myorg/myimage:lts
 ```
 
 ## Release Candidate
