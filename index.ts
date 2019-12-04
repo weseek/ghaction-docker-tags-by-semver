@@ -11,7 +11,7 @@ import format from 'date-fns/format';
  * @param additionalTagsStr Comma separated string
  * @returns Array of tags
  */
-function parseSemVer(semver: string, suffix: string, additionalTagsStr: string | null): Array<string> {
+function parseSemVer(semver: string, suffix: string, additionalTagsStr: string): Array<string> {
   // https://regex101.com/r/sxGQtU/2
   const match: RegExpMatchArray | null = semver.match(/^([0-9]+)\.([0-9]+)\.([0-9]+)(-RC[0-9]*)?$/);
   if (match == null) {
@@ -44,11 +44,12 @@ function parseSemVer(semver: string, suffix: string, additionalTagsStr: string |
   }
 
   // append additional tags
-  if (additionalTagsStr != null) {
-    additionalTagsStr.split(',').forEach((tag) => {
-      tags.push(tag.trim());
-    });
-  }
+  additionalTagsStr.split(',').forEach((splitted) => {
+    const tag = splitted.trim();
+    if (tag.length > 0) {
+      tags.push();
+    }
+  });
 
   return tags;
 }
@@ -61,9 +62,9 @@ async function run() {
     const source: string = core.getInput('source', { required: true });
     const target: string = core.getInput('target', { required: true });
     const semver: string = core.getInput('semver', { required: true });
-    const suffix: string = core.getInput('suffix'); //                   default: ''
-    const isPublish: boolean = core.getInput('publish') === 'true'; //   default: null
-    const additionalTagsStr: string = core.getInput('additional-tags');
+    const suffix: string = core.getInput('suffix'); //                    default: ''
+    const additionalTagsStr: string = core.getInput('additional-tags') // default: '';
+    const isPublish: boolean = core.getInput('publish') === 'true'; //    default: undefined
 
     // generate tags
     const tags: Array<string> = parseSemVer(semver, suffix, additionalTagsStr);
