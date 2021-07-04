@@ -1,3 +1,6 @@
+# DEPRECATED: It is recommended to use [docker/build-push-action](https://github.com/docker/build-push-action) with [docker/metadata-action](https://github.com/docker/metadata-action)
+
+
 # Docker tags by SemVer Action
 
 [![Actions status](https://github.com/weseek/ghaction-docker-tags-by-semver/workflows/Node%20CI/badge.svg)](https://github.com/weseek/ghaction-docker-tags-by-semver/actions)
